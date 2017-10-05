@@ -4,7 +4,8 @@ class ListsController < ApplicationController
    end
 
   def show
-    @list = current_user.lists.find(params[:id])
+    # @list = current_user.Lists.find(params[:id])
+    @list = List.find(params[:id])
   end
 
   def new
@@ -23,19 +24,21 @@ class ListsController < ApplicationController
   end
 
   def edit
-    @list = current_user.lists.find(params[:id])
+    # @list = current_user.lists.find(params[:id])
+    @list = List.find(params[:id])
   end
 
   def update
-
-    list = current_user.lists.find(params[:id])
+    list = List.find(params[:id])
+    # list = current_user.lists.find(params[:id])
     list.update(list_params)
 
     redirect_to list
   end
 
   def destroy
-    current_user.lists.destroy(params[:id])
+    # current_user.lists.destroy(params[:id])
+    List.destroy(params[:id])
     redirect_to lists_url
   end
 
